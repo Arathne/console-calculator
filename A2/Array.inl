@@ -13,7 +13,7 @@ template <typename T>
 inline
 size_t Array <T>::size (void) const
 {
-
+    return this-> cur_size_;
 }
 
 //
@@ -23,5 +23,15 @@ template <typename T>
 inline
 size_t Array <T>::max_size (void) const
 {
+    return this-> max_size_;
+}
 
+template <typename T>
+inline
+void Array <T>::checkBounds( size_t index ) const
+{
+    if( index >= cur_size_ )
+    {
+        throw std::out_of_range( "index out of bounds" );
+    }
 }
