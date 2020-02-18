@@ -9,9 +9,10 @@
 // Stack
 //
 template <typename T>
-Stack <T>::Stack (void)
+Stack <T>::Stack (void):
+    data_( new Array<T> )
 {
-
+   
 }
 
 //

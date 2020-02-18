@@ -14,6 +14,7 @@
 #define _CS507_STACK_H_
 
 #include <exception>
+#include "Array.h"
 
 /**
  * @class Stack
@@ -109,6 +110,10 @@ public:
 
 private:
   // add member variable here
+  size_t size_;
+  Array<T>* data_; 
+
+
 };
 
 // include the inline files
