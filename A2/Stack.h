@@ -1,4 +1,5 @@
    // -*- C++ -*-
+
 // $Id: Stack.h 380 2010-02-08 05:10:33Z hillj $
 
 //==============================================================================
@@ -112,8 +113,6 @@ private:
   // add member variable here
   size_t size_;
   Array<T>* data_; 
-
-
 };
 
 // include the inline files

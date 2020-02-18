@@ -13,7 +13,7 @@ template <typename T>
 inline
 size_t Stack <T>::size (void) const
 {
-
+    return size_;
 }
 
 //
@@ -23,7 +23,7 @@ template <typename T>
 inline
 T Stack <T>::top (void) const
 {
-
+    return data_-> get( size_-1 );
 }
 
 //
@@ -33,5 +33,12 @@ template <typename T>
 inline
 bool Stack <T>::is_empty (void) const
 {
-
+    bool empty = false;
+    
+    if( size_ == 0 )
+    {
+        empty = true;
+    }
+    
+    return empty;
 }

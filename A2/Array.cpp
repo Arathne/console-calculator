@@ -8,14 +8,16 @@
 #include "Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception
 
+#define DEFAULT_SIZE 0
+
 //
 // Array
 //
 template <typename T>
 Array <T>::Array (void):
-    data_( new T[0] ),
-    cur_size_( 0 ),
-    max_size_( 0 )
+    data_( new T[ DEFAULT_SIZE ] ),
+    cur_size_( DEFAULT_SIZE ),
+    max_size_( DEFAULT_SIZE )
 {}
 
 //

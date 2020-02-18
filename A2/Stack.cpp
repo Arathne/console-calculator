@@ -5,23 +5,25 @@
 // I pledge that I have neither given nor received any help
 // on this assignment.
 
+#define EMPTY 0
+#include <iostream>
 //
 // Stack
 //
 template <typename T>
 Stack <T>::Stack (void):
-    data_( new Array<T> )
-{
-   
-}
+    size_( EMPTY ),
+    data_( new Array<T>( EMPTY ) )
+{}
 
 //
 // Stack
 //
 template <typename T>
-Stack <T>::Stack (const Stack & stack)
+Stack <T>::Stack (const Stack & stack):
+    Stack<T>{}
 {
-
+    *this = stack;
 }
 
 //
@@ -30,7 +32,7 @@ Stack <T>::Stack (const Stack & stack)
 template <typename T>
 Stack <T>::~Stack (void)
 {
-
+    delete data_;
 }
 
 //
@@ -39,7 +41,9 @@ Stack <T>::~Stack (void)
 template <typename T>
 void Stack <T>::push (T element)
 {
-
+    size_++;
+    data_-> resize( size_ );
+    data_-> set( size_-1, element );
 }
 
 //
@@ -48,7 +52,13 @@ void Stack <T>::push (T element)
 template <typename T>
 void Stack <T>::pop (void)
 {
+    if( is_empty() )
+    {
+        throw empty_exception();
+    }
 
+    size_--;
+    data_-> resize( size_ );
 }
 
 //
@@ -56,8 +66,13 @@ void Stack <T>::pop (void)
 //
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
-{
-
+{  
+    if( &rhs != &(*this) )
+    {
+        *data_ = *rhs.data_;
+        size_ = rhs.size_;
+    }
+    return *this;
 }
 
 //
@@ -66,5 +81,6 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
-
+    data_-> resize( EMPTY );      
+    size_ = EMPTY;
 }
