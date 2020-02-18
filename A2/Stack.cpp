@@ -67,7 +67,7 @@ void Stack <T>::pop (void)
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {  
-    if( &rhs != &(*this) )
+    if( &rhs != &(*this) ) // check self comparison
     {
         *data_ = *rhs.data_;
         size_ = rhs.size_;
