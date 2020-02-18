@@ -1,5 +1,5 @@
 // $Id: Fixed_Array.cpp 827 2011-02-07 14:20:53Z hillj $
-
+#include <iostream>
 // Honor Pledge:
 //
 // I pledge that I have neither given nor received any help
@@ -9,46 +9,43 @@
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (void)
-{
-
-}
+Fixed_Array <T, N>::Fixed_Array (void):
+    Array<T>{ N }
+{}
 
 //
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr)
-{
-	
-}
+Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr):
+    Array<T>{ arr }
+{}
 
 //
 // Fixed_Array
 //
 template <typename T, size_t N>
 template <size_t M>
-Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
+Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr):
+    Array<T>{ arr }
 {
-	
+    Array<T>::resize( N );
 }
 
 //
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (T fill)
-{
-}
+Fixed_Array <T, N>::Fixed_Array (T fill):
+    Array<T>{ N, fill }
+{}
 
 //
 // ~Fixed_Array
 //
 template <typename T, size_t N>
 Fixed_Array <T, N>::~Fixed_Array (void)
-{
-
-}
+{}
 
 //
 // operator =
@@ -56,7 +53,15 @@ Fixed_Array <T, N>::~Fixed_Array (void)
 template <typename T, size_t N>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, N> & rhs)
 {
-	
+    if( rhs != *this ) // check self-comparison
+    {
+        for( int i = 0; i < Fixed_Array<T,N>::size(); i++ ) // copy rhs to lhs
+        {
+            Fixed_Array<T,N>::set( i, rhs.get(i) );
+        }
+    }
+    
+    return *this;
 }
 
 //
@@ -66,5 +71,13 @@ template <typename T, size_t N>
 template <size_t M>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, M> & rhs)
 {
-
+    if( rhs != *this ) // check self-comparison
+    {
+        for( int i = 0; i < Fixed_Array<T,N>::size(); i++ ) // copy rhs to lhs
+        {
+            Fixed_Array<T,N>::set( i, rhs.get(i) );
+        }
+    }
+    
+    return *this;
 }
