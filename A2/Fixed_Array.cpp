@@ -27,9 +27,9 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr):
 template <typename T, size_t N>
 template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr):
-    Array<T>{ arr }
+    Array<T>{ N }
 {
-    Array<T>::resize( N );
+    *this = arr;
 }
 
 //
@@ -55,7 +55,7 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 {
     if( rhs != *this ) // check self-comparison
     {
-        for( int i = 0; i < Fixed_Array<T,N>::size(); i++ ) // copy rhs to lhs
+        for( int i = 0; i < N; i++ ) // copy rhs to lhs
         {
             Fixed_Array<T,N>::set( i, rhs.get(i) );
         }
@@ -73,7 +73,13 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 {
     if( rhs != *this ) // check self-comparison
     {
-        for( int i = 0; i < Fixed_Array<T,N>::size(); i++ ) // copy rhs to lhs
+        size_t smallestSize = N; // find smallest array size
+        if( rhs.size() < N )
+        {
+            smallestSize = rhs.size();
+        }
+
+        for( int i = 0; i < smallestSize; i++ ) // copy rhs to lhs
         {
             Fixed_Array<T,N>::set( i, rhs.get(i) );
         }
