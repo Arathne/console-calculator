@@ -6,7 +6,7 @@
 // on this assignment.
 
 #define EMPTY 0
-#include <iostream>
+
 //
 // Stack
 //
@@ -58,7 +58,6 @@ void Stack <T>::pop (void)
     }
 
     size_--;
-    data_-> resize( size_ );
 }
 
 //
