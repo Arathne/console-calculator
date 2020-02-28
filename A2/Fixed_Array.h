@@ -32,15 +32,6 @@ public:
   Fixed_Array (const Fixed_Array <T, N> & arr);
 	
   /**
-   * Initializing constructor. The source array can be of any size
-   * as long as they are of the same type.
-   *
-   * @param[in]      arr        Source array
-   */
-  template <size_t M>
-  Fixed_Array (const Fixed_Array <T, M> & arr);
-
-  /**
    * Initializing constructor. Fills the contents of the 
    * array with the specified \a fill value.
    *
@@ -57,14 +48,6 @@ public:
    * @param[in]      rhs        Right-hand side of operator.
    */
   const Fixed_Array & operator = (const Fixed_Array <T, N> & rhs);
-
-  /**
-   * Assignment operator
-   *
-   * @param[in]      rhs        Right-hand side of operator.
-   */
-  template <size_t M>
-  const Fixed_Array & operator = (const Fixed_Array <T, M> & rhs);
 };
 
 // include the inline files
