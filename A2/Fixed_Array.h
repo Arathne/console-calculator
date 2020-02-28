@@ -8,7 +8,7 @@
 #ifndef _CS507_FIXED_ARRAY_H_
 #define _CS507_FIXED_ARRAY_H_
 
-#include "Array.h"
+#include "Array_Base.h"
 
 /**
  * @class Fixed_Array
@@ -18,7 +18,7 @@
  * the Array class's methods.
  */
 template <typename T, size_t N>
-class Fixed_Array : public Array <T>
+class Fixed_Array : public Array_Base <T>
 {
 public:
   /// Default constructor.

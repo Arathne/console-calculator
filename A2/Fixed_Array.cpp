@@ -10,7 +10,7 @@
 //
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (void):
-    Array<T>{ N }
+    Array_Base<T>{ N }
 {}
 
 //
@@ -18,7 +18,7 @@ Fixed_Array <T, N>::Fixed_Array (void):
 //
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr):
-    Array<T>{ arr }
+    Array_Base<T>{ arr }
 {}
 
 //
@@ -26,7 +26,7 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr):
 //
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (T fill):
-    Array<T>{ N, fill }
+    Array_Base<T>{ N, fill }
 {}
 
 //
@@ -40,7 +40,7 @@ Fixed_Array <T, N>::~Fixed_Array (void)
 // operator =
 //
 template <typename T, size_t N>
-const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, N> & rhs):
+const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, N> & rhs)
 {
     if( rhs != *this ) // check self-comparison
     {
