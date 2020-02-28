@@ -25,13 +25,3 @@ size_t Array_Base <T>::max_size (void) const
 {
     return this-> max_size_;
 }
-
-template <typename T>
-inline
-void Array_Base <T>::checkBounds( size_t index ) const
-{
-    if( index >= cur_size_ )
-    {
-        throw std::out_of_range( "index out of bounds" );
-    }
-}

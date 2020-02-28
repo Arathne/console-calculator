@@ -17,7 +17,7 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
-#include <cstring>          // for size_t definition
+//#include <cstring>          // for size_t definition
 
 /**
  * @class Array

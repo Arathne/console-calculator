@@ -261,3 +261,16 @@ void Array_Base <T>::fill (T value)
         *( data_+i ) = value;
     }
 }
+
+//
+// checkBounds
+//
+template <typename T>
+inline
+void Array_Base <T>::checkBounds( size_t index ) const
+{
+    if( index >= cur_size_ )
+    {
+        throw std::out_of_range( "index out of bounds" );
+    }
+}

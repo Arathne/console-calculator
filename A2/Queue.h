@@ -9,7 +9,7 @@
 #define _CS507_QUEUE_H_
 
 #include <exception>
-#include "Array.h"
+#include "Array_Base.h"
 #include <iostream>
 
 template <typename T>
