@@ -1,4 +1,5 @@
 # creating calculator using different software design patterns
+### use mpc for build/running
 
 ## A1
 ### extremely fast array using pointers
