@@ -1,0 +1,43 @@
+project (assignment4) {
+  exename = assignment4
+  install = .
+ 
+  specific (make, gnuace) {
+    compile_flags += -std=c++11 -g
+  }
+
+  Source_Files {
+    driver.cpp
+    
+    command_pattern/Math.cpp
+    command_pattern/Addition.cpp
+    command_pattern/Subtraction.cpp
+    command_pattern/Multiplication.cpp
+    command_pattern/Division.cpp
+    command_pattern/Modulus.cpp
+    command_pattern/Negation.cpp
+    command_pattern/Number.cpp
+  
+    visitor_pattern/Postorder_Traversal.cpp
+    visitor_pattern/Postorder_Deletion.cpp
+    
+    composite_pattern/Negate_Node.cpp
+    composite_pattern/Number_Node.cpp
+    composite_pattern/Addition_Node.cpp
+    composite_pattern/Subtraction_Node.cpp
+    composite_pattern/Multiplication_Node.cpp
+    composite_pattern/Division_Node.cpp
+    composite_pattern/Modulus_Node.cpp
+  
+    builder_pattern/Expression_Tree.cpp
+    builder_pattern/Expression_Director.cpp
+  
+    strategy_pattern/Postfix_Evaluator.cpp
+    strategy_pattern/Infix_Evaluator.cpp
+    strategy_pattern/Infix_To_Postfix.cpp
+  }
+
+  Template_Files {
+    data_structures/Stack.cpp
+  }
+}

@@ -1,0 +1,139 @@
+#----------------------------------------------------------------------------
+#       Macros
+#----------------------------------------------------------------------------
+CC            = gcc
+CXX           = g++
+LD            = $(CXX) $(CCFLAGS) $(CPPFLAGS)
+AR            = ar
+PICFLAGS      = -fPIC
+CPPFLAGS      = $(PICFLAGS) $(GENFLAGS) -std=c++11 -g -D_REENTRANT
+OBJEXT        = .o
+OUTPUT_OPTION = -o "$@"
+COMPILE.c     = $(CC) $(CFLAGS) $(CPPFLAGS) -c
+COMPILE.cc    = $(CXX) $(CCFLAGS) $(CPPFLAGS) -c
+LDFLAGS       = -L"."
+CCC           = $(CXX)
+MAKEFILE      = Makefile.assignment4
+DEPENDENCIES  = .depend.$(MAKEFILE)
+BTARGETDIR    = ./
+BIN           = $(BTARGETDIR)assignment4$(EXESUFFIX)$(EXEEXT)
+CAT           = cat
+MV            = mv -f
+RM            = rm -rf
+CP            = cp -p
+NUL           = /dev/null
+MKDIR         = mkdir -p
+TESTDIRSTART  = test -d
+TESTDIREND    = ||
+TOUCH         = touch
+EXEEXT        = 
+LIBPREFIX     = lib
+LIBSUFFIX     = 
+GENFLAGS      = -O
+LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
+OBJS          = driver$(OBJEXT) command_pattern/Math$(OBJEXT) command_pattern/Addition$(OBJEXT) command_pattern/Subtraction$(OBJEXT) command_pattern/Multiplication$(OBJEXT) command_pattern/Division$(OBJEXT) command_pattern/Modulus$(OBJEXT) command_pattern/Negation$(OBJEXT) command_pattern/Number$(OBJEXT) visitor_pattern/Postorder_Traversal$(OBJEXT) visitor_pattern/Postorder_Deletion$(OBJEXT) composite_pattern/Negate_Node$(OBJEXT) composite_pattern/Number_Node$(OBJEXT) composite_pattern/Addition_Node$(OBJEXT) composite_pattern/Subtraction_Node$(OBJEXT) composite_pattern/Multiplication_Node$(OBJEXT) composite_pattern/Division_Node$(OBJEXT) composite_pattern/Modulus_Node$(OBJEXT) builder_pattern/Expression_Tree$(OBJEXT) builder_pattern/Expression_Director$(OBJEXT) strategy_pattern/Postfix_Evaluator$(OBJEXT) strategy_pattern/Infix_Evaluator$(OBJEXT) strategy_pattern/Infix_To_Postfix$(OBJEXT)
+SRC           = driver.cpp command_pattern/Math.cpp command_pattern/Addition.cpp command_pattern/Subtraction.cpp command_pattern/Multiplication.cpp command_pattern/Division.cpp command_pattern/Modulus.cpp command_pattern/Negation.cpp command_pattern/Number.cpp visitor_pattern/Postorder_Traversal.cpp visitor_pattern/Postorder_Deletion.cpp composite_pattern/Negate_Node.cpp composite_pattern/Number_Node.cpp composite_pattern/Addition_Node.cpp composite_pattern/Subtraction_Node.cpp composite_pattern/Multiplication_Node.cpp composite_pattern/Division_Node.cpp composite_pattern/Modulus_Node.cpp builder_pattern/Expression_Tree.cpp builder_pattern/Expression_Director.cpp strategy_pattern/Postfix_Evaluator.cpp strategy_pattern/Infix_Evaluator.cpp strategy_pattern/Infix_To_Postfix.cpp
+LINK.cc       = $(LD) $(LDFLAGS)
+EXPORTFLAGS   = 
+DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
+
+#----------------------------------------------------------------------------
+#       Local targets
+#----------------------------------------------------------------------------
+
+all: $(BIN)
+
+$(BIN): $(OBJS) $(DEPLIBS)
+	@$(TESTDIRSTART) "$(BTARGETDIR)" $(TESTDIREND) $(MKDIR) "$(BTARGETDIR)"
+	$(LINK.cc) $(OBJS) $(LDLIBS) $(OUTPUT_OPTION)
+
+generated: $(GENERATED_DIRTY)
+	@-:
+
+driver$(OBJEXT): driver.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) driver.cpp
+
+command_pattern/Math$(OBJEXT): command_pattern/Math.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Math.cpp
+
+command_pattern/Addition$(OBJEXT): command_pattern/Addition.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Addition.cpp
+
+command_pattern/Subtraction$(OBJEXT): command_pattern/Subtraction.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Subtraction.cpp
+
+command_pattern/Multiplication$(OBJEXT): command_pattern/Multiplication.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Multiplication.cpp
+
+command_pattern/Division$(OBJEXT): command_pattern/Division.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Division.cpp
+
+command_pattern/Modulus$(OBJEXT): command_pattern/Modulus.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Modulus.cpp
+
+command_pattern/Negation$(OBJEXT): command_pattern/Negation.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Negation.cpp
+
+command_pattern/Number$(OBJEXT): command_pattern/Number.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) command_pattern/Number.cpp
+
+visitor_pattern/Postorder_Traversal$(OBJEXT): visitor_pattern/Postorder_Traversal.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) visitor_pattern/Postorder_Traversal.cpp
+
+visitor_pattern/Postorder_Deletion$(OBJEXT): visitor_pattern/Postorder_Deletion.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) visitor_pattern/Postorder_Deletion.cpp
+
+composite_pattern/Negate_Node$(OBJEXT): composite_pattern/Negate_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Negate_Node.cpp
+
+composite_pattern/Number_Node$(OBJEXT): composite_pattern/Number_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Number_Node.cpp
+
+composite_pattern/Addition_Node$(OBJEXT): composite_pattern/Addition_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Addition_Node.cpp
+
+composite_pattern/Subtraction_Node$(OBJEXT): composite_pattern/Subtraction_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Subtraction_Node.cpp
+
+composite_pattern/Multiplication_Node$(OBJEXT): composite_pattern/Multiplication_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Multiplication_Node.cpp
+
+composite_pattern/Division_Node$(OBJEXT): composite_pattern/Division_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Division_Node.cpp
+
+composite_pattern/Modulus_Node$(OBJEXT): composite_pattern/Modulus_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) composite_pattern/Modulus_Node.cpp
+
+builder_pattern/Expression_Tree$(OBJEXT): builder_pattern/Expression_Tree.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) builder_pattern/Expression_Tree.cpp
+
+builder_pattern/Expression_Director$(OBJEXT): builder_pattern/Expression_Director.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) builder_pattern/Expression_Director.cpp
+
+strategy_pattern/Postfix_Evaluator$(OBJEXT): strategy_pattern/Postfix_Evaluator.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) strategy_pattern/Postfix_Evaluator.cpp
+
+strategy_pattern/Infix_Evaluator$(OBJEXT): strategy_pattern/Infix_Evaluator.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) strategy_pattern/Infix_Evaluator.cpp
+
+strategy_pattern/Infix_To_Postfix$(OBJEXT): strategy_pattern/Infix_To_Postfix.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) strategy_pattern/Infix_To_Postfix.cpp
+
+clean:
+	-$(RM) $(OBJS)
+
+realclean: clean
+	-$(RM) $(BIN)
+
+check-syntax:
+	$(COMPILE.cc) $(EXPORTFLAGS) -Wall -Wextra -pedantic -fsyntax-only $(CHK_SOURCES)
+
+#----------------------------------------------------------------------------
+#       Dependencies
+#----------------------------------------------------------------------------
+
+
+depend:
+	-$(MPC_ROOT)/depgen.pl  $(CFLAGS) $(CCFLAGS) $(CPPFLAGS) -f $(DEPENDENCIES) $(SRC) 2> $(NUL)
+
+-include $(DEPENDENCIES)
